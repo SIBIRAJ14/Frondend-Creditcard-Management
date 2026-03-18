@@ -1,0 +1,43 @@
+<div class="sidebar">
+  <!-- Logo -->
+  <div class="logo">
+    <span class="logo-icon">💳</span>
+    <span class="logo-text">CreditFlow</span>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav-menu">
+    <a (click)="goDashboard()" [class.active]="isActive('/dashboard')" class="nav-item">
+      <span class="nav-icon"></span>
+      <span class="nav-text">Dashboard</span>
+    </a>
+
+    <a (click)="goCustomers()" [class.active]="isActive('/customers')" class="nav-item">
+      <span class="nav-icon"></span>
+      <span class="nav-text">Customers</span>
+    </a>
+
+    <a (click)="goCreditCards()" [class.active]="isActive('/creditcards')" class="nav-item">
+      <span class="nav-icon"></span>
+      <span class="nav-text">Credit Cards</span>
+    </a>
+
+    <a (click)="goAbout()" [class.active]="isActive('/about')" class="nav-item">
+      <span class="nav-icon"></span>
+      <span class="nav-text">About</span>
+    </a>
+  </nav>
+
+  <!-- Logout Button -->
+  <button class="logout-btn" (click)="logout()">
+    <span class="logout-icon"></span>
+    <span class="logout-text">Logout</span>
+  </button>
+</div>
+<!-- Simple Modal -->
+<div class="modal" *ngIf="showAdminModal">
+  <div class="modal-content">
+    <p>{{ message }}</p>
+    <button (click)="closeModal()">OK</button>
+  </div>
+</div>

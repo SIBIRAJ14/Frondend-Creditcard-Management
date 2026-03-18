@@ -1,0 +1,31 @@
+<div class="layout">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <app-sidebar></app-sidebar>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <h1>{{ pageTitle }}</h1>
+      </div>
+
+      <div class="header-right">
+        <div class="user-info">
+          <span class="user-name">Welcome</span>
+          <span class="user-avatar">👤</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+</div>

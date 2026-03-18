@@ -1,0 +1,89 @@
+<div class="login-container">
+  <div class="login-card">
+    <!-- Decorative top bar -->
+    <div class="card-decoration"></div>
+    
+    <!-- Logo/Brand Section -->
+    <div class="brand-section">
+      <div class="logo-wrapper">
+        <div class="logo-icon">
+          💳
+        </div>
+        <h1>CreditFlow</h1>
+      </div>
+      <p class="brand-tagline">Secure Credit Card Management</p>
+    </div>
+
+    <!-- Login Form -->
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+      <!-- Email Field -->
+      <div class="input-group">
+        <label for="email">Email address  </label>
+        <div class="input-wrapper">
+          <span class="input-icon">📧</span>
+          <input
+            type="email"
+            id="email"
+            placeholder="name@example.com"
+            [(ngModel)]="email"
+            name="email"
+            required
+            #emailInput="ngModel"
+          />
+        </div>
+        <div class="input-hint" *ngIf="emailInput.touched && emailInput.invalid">
+          Please enter a valid email
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="input-group">
+        <label for="password">Password  </label>
+        <div class="input-wrapper">
+          <span class="input-icon">🔒</span>
+          <input
+            type="password"
+            id="password"
+            placeholder="••••••••"
+            [(ngModel)]="password"
+            name="password"
+            required
+            minlength="6"
+            #passwordInput="ngModel"
+          />
+          <button type="button" class="password-toggle" (click)="togglePasswordVisibility()">
+            👁️
+          </button>
+        </div>
+        <div class="input-hint" *ngIf="passwordInput.touched && passwordInput.invalid">
+          Password must be at least 6 characters
+        </div>
+      </div>
+
+
+      <!-- Error Message -->
+      <div class="error-message" *ngIf="error">
+        <span class="error-icon">⚠️</span>
+        {{ error }}
+      </div>
+
+      <!-- Login Button -->
+      <button type="submit" class="login-button" [disabled]="!loginForm.valid">
+        <span>Sign in</span>
+        <svg class="button-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M4.16666 10H15.8333M15.8333 10L11.6667 5.83334M15.8333 10L11.6667 14.1667" 
+            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </form>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p class="footer-text">
+        <span class="security-badge"></span>
+        Secure login
+      </p>
+      <p class="copyright">© 2026 CreditFlow. All rights reserved.</p>
+    </div>
+  </div>
+</div>

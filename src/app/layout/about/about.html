@@ -1,0 +1,66 @@
+<div class="about-page">
+
+  <!-- HEADER SECTION (like customers) -->
+  <div class="header-section">
+    <div class="title-wrapper">
+      <h2 class="page-title">About {{ appName }}</h2>
+      <p class="subtitle">
+        Smart credit card management platform
+      </p>
+    </div>
+  </div>
+
+  <!-- APPLICATION OVERVIEW -->
+  <div class="card-section">
+    <h3 class="section-title">Application Overview</h3>
+
+    <p class="description">
+      <b>CardFlex</b> is a modern credit card management system designed to manage
+      customers, issue credit cards, and track card details efficiently.
+      This application is built using <b>Angular</b> for the frontend and
+      <b>Spring Boot</b> for backend services.
+    </p>
+
+    <div class="info-grid">
+
+      <div class="info-box">
+        <span class="label">Application Name</span>
+        <span class="value">{{ appName }}</span>
+      </div>
+
+      <div class="info-box">
+        <span class="label">Version</span>
+        <span class="value">{{ version }}</span>
+      </div>
+
+      <div class="info-box">
+        <span class="label">Frontend</span>
+        <span class="value">Angular (Standalone Components)</span>
+      </div>
+
+      <div class="info-box">
+        <span class="label">Backend</span>
+        <span class="value">Spring Boot + MySQL</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="card-section">
+    <h3 class="section-title">Key Features</h3>
+
+    <ul class="feature-list">
+      <li *ngFor="let feature of features">
+        <span class="check">✔</span>
+        {{ feature }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- FOOTER CARD -->
+  <div class="card-section footer-card">
+    © 2026 {{ appName }}. All rights reserved.
+  </div>
+
+</div>

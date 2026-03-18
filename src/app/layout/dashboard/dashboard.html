@@ -1,0 +1,30 @@
+<div class="dashboard">
+
+  <div class="dashboard-header-card">
+    <h3>Welcome to CardFlex Dashboard</h3>
+  </div>
+
+  <h3 class="section-title">Credit Card Plans</h3>
+
+  <div class="cards-grid">
+    <div
+      class="plan-card"
+      *ngFor="let plan of cardPlans"
+      [ngClass]="plan.color"
+    >
+      <h4>{{ plan.name }} Card</h4>
+
+      <p class="price">{{ plan.price }}</p>
+      <p class="limit">
+        Credit Limit: <b>{{ plan.limit }}</b>
+      </p>
+
+      <ul>
+        <li *ngFor="let benefit of plan.benefits">
+          {{ benefit }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>

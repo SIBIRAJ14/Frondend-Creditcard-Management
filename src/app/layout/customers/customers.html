@@ -1,0 +1,125 @@
+<div class="customers-page">
+
+  <!-- Header Section -->
+  <div class="header-section">
+    <div class="title-wrapper">
+      <h2 class="subtitle">View and manage customer records</h2>
+    </div>
+    <button class="add-btn" (click)="addCustomer()">
+      <span class="btn-icon">+</span>
+      Add New Customer
+    </button>
+  </div>
+
+  <!-- Search Section -->
+  <div class="search-section">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input
+        type="number"
+        [(ngModel)]="searchId"
+        (input)="searchCustomerById()"
+        placeholder="Search by Customer ID"
+        class="search-input"
+      />
+    </div>
+    <button class="clear-btn" (click)="resetSearch()">Clear</button>
+  </div>
+
+  <!-- Customers Table -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>CUSTOMER</th>
+          <th>PHONE</th>
+          <th>DATE OF BIRTH</th>
+          <th>LOCATION</th>
+          <th>ACTIONS</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let c of filteredCustomers">
+          <td class="id-col">#{{ c.customerId }}</td>
+
+          <td class="customer-col">
+            <div class="customer-info">
+              <span class="customer-name">{{ c.name }}</span>
+              <span class="customer-email">{{ c.email }}</span>
+            </div>
+          </td>
+
+          <td class="phone-col">{{ c.phone }}</td>
+
+          <td class="dob-col">
+            {{ c.dateOfBirth | date:'dd MMM yyyy' }}
+          </td>
+
+          <td class="location-col">
+            {{ c.city }}, {{ c.state }}, {{ c.country }}
+          </td>
+
+          <td class="actions-col">
+            <button
+              class="action-btn edit"
+              (click)="editCustomer(c.customerId)">
+              Edit
+            </button>
+
+            <button
+              class="action-btn delete"
+              (click)="openDeleteConfirm(c.customerId)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Empty State -->
+    <div *ngIf="filteredCustomers.length === 0" class="empty-state">
+      <div class="empty-icon">👥</div>
+      <h3>No customers found</h3>
+      <p>Try adjusting your search or add a new customer</p>
+      <button class="clear-btn" (click)="resetSearch()">Clear Search</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Delete Confirmation Modal -->
+<div class="modal-overlay" *ngIf="showDeleteConfirm">
+  <div class="modal-content">
+    <div class="modal-icon warning">⚠️</div>
+    <h3>Delete Customer</h3>
+    <p>Are you sure you want to delete this customer?</p>
+    <div class="modal-actions">
+      <button class="cancel-btn" (click)="cancelDelete()">Cancel</button>
+      <button class="delete-btn" (click)="confirmDelete()">Delete</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Success Modal -->
+<div class="modal-overlay" *ngIf="showSuccessModal">
+  <div class="modal-content success">
+    <div class="modal-icon success">✅</div>
+    <h3>Success</h3>
+    <p>{{ message }}</p>
+    <button class="ok-btn" (click)="closeModal()">OK</button>
+  </div>
+</div>
+
+
+<!-- Error Modal -->
+<div class="modal-overlay" *ngIf="showErrorModal">
+  <div class="modal-content error">
+    <div class="modal-icon error">❌</div>
+    <h3>Error</h3>
+    <p>{{ message }}</p>
+    <button class="ok-btn" (click)="closeModal()">OK</button>
+  </div>
+</div>
